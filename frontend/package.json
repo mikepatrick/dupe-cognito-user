@@ -1,0 +1,10 @@
+{
+  "name": "dupe-cognito-user-demo-frontend",
+  "version": "1.0.0",
+  "description": "Create issue in a browser.",
+  "main": "index.html",
+  "license": "MIT",
+  "dependencies": {
+    "aws-amplify": "^0.4.4"
+  }
+}

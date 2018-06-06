@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>APIGW IAM Demo</title>
+    <script src="node_modules/aws-amplify/dist/aws-amplify.js" ></script>
+  </head>
+
+  <body>
+    <script>
+        const API = window['aws-amplify'].API;
+        const Auth = window['aws-amplify'].Auth;
+        const Amplify = window['aws-amplify'].default;
+
+        const ID_POOL_ID = '<IDENTITY_POOL_ID>';
+
+        Amplify.configure({
+            Auth: {
+                identityPoolId: ID_POOL_ID,
+                region: 'us-east-1',
+                userPoolId: '<USER_POOL_ID>',
+                userPoolWebClientId: '<APP_CLIENT_ID>',
+                mandatorySignIn: true
+            },
+        });
+
+        Amplify.Logger.LOG_LEVEL = 'DEBUG';
+
+        AWS.config.region = 'us-east-1';
+
+        function signUp() {
+            var username = document.getElementById('name-input').value;
+            var pw = document.getElementById('pw-input').value;
+
+            Auth.signUp(username, pw)
+                .then(user => { 
+                    console.log(user);
+                })
+                .catch(err => console.log(err));
+        }
+    </script>
+
+    <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="name-input" />
+        <label for="pw">Password</label>
+        <input type="password" name="pw" id="pw-input" />
+        <button id="signInButton" onclick="signUp();signUp();">Sign Up</button>
+    </div>
+  </body>
+</html>

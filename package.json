@@ -1,0 +1,13 @@
+{
+  "name": "dupe-cognito-user-demo",
+  "version": "1.0.0",
+  "description": "Create two users in same user pool with same email when only login by email is allowed.",
+  "main": "createUsers.js",
+  "repository": "git@github.com:mikepatrick/dupe-cognito-user-demo.git",
+  "author": "mikepatrick",
+  "license": "MIT",
+  "dependencies": {
+    "aws-amplify": "^0.4.4",
+    "node-fetch": "^2.1.2"
+  }
+}
