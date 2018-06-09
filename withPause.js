@@ -23,4 +23,4 @@ const signMeUp = () => {
 }
 
 signMeUp();
-signMeUp();
+setTimeout(signMeUp, 1000);
