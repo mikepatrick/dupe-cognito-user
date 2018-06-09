@@ -14,12 +14,14 @@ To reproduce in running in a browser:
  - Start a web server in this folder.  For example, `python -m SimpleHTTPServer 9000` to serve on port 9000.
  - Visit http://localhost:9000/index.html, provide a username and password, and sign up.
 
+`withPause.html` and `withPause.js` demonstrate that with a one second pause, only one user is created in the User Pool.
+
 **Observations**
 
-When my front end code accidentally calls `Auth.signUp()` twice I do get an appropriate error response from the second call:
+When my front end code calls `Auth.signUp()` twice for the same email, I do _always_ get an appropriate error response from the second call:
 
 `{ code: 'InvalidParameterException',
   name: 'InvalidParameterException',
   message: 'Alias entry already exists for a different username' }`
 
-but, the user is created nevertheless.
+However, if the calls are less than about one second apart, the error response is miselading, because a user _does_ get created in my pool.
